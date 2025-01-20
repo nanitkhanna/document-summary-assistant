@@ -12,12 +12,10 @@ client/yarn-debug.log*
 client/yarn-error.log*
 client/pnpm-debug.log*
 client/lerna-debug.log*
-client/
 client/node_modules
 client/dist
 client/dist-ssr
 client/*.local
-client/
 client/# Editor directories and files
 client/.vscode/*
 client/!.vscode/extensions.json
@@ -28,6 +26,11 @@ client/*.ntvs*
 client/*.njsproj
 client/*.sln
 client/*.sw?
+/client/.env
+/client/.env.local
+/client/.env.development.local
+/client/.env.test.local
+/client/.env.production.local
 
 # Server (Node.js) specific files
 /server/node_modules/
@@ -54,5 +57,5 @@ Thumbs.db
 *.swo
 
 # Misc
-.env.local
-.env.*.local
+# .env.local
+# .env.*.local
