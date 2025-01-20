@@ -6,6 +6,7 @@ const requiredEnvVariables = [
   'PORT',
   'ALLOWED_ORIGINS',
   'UPLOAD_PATH',
+  'GEMINI_API_KEY',
   'ALLOWED_FILE_TYPES'
 ];
 
@@ -21,5 +22,6 @@ module.exports = {
   PORT: process.env.PORT || 3000,
   ALLOWED_ORIGINS: process.env.ALLOWED_ORIGINS,
   UPLOAD_PATH: process.env.UPLOAD_PATH,
+  GEMINI_API_KEY: process.env.GEMINI_API_KEY,
   ALLOWED_FILE_TYPES: process.env.ALLOWED_FILE_TYPES
 };

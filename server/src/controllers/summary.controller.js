@@ -3,9 +3,11 @@ const {summaryService} = require('../services');
 const {sendResponse} = require('../lib/sendResponse');
 const {responseMessages} = require('../config/responseMessages');
 const {deleteFile} = require('../services/files.service');
+const { geminiSummary } = require('../services/gemini.service');
 
 const generateSummary = async (req, res) => {
   const uploadFile = req.file;
+  const {length} = req.query;
   try {
     if (!uploadFile) {
       return sendResponse(
@@ -41,15 +43,21 @@ const generateSummary = async (req, res) => {
     if (!success || !textResult) {
       deleteFile({filepath: uploadFile.path});
       return res
-        .status(411)
-        .json({message: responseMessages.UNSUPPORTED_FILE_TYPE});
+      .status(411)
+      .json({message: responseMessages.UNSUPPORTED_FILE_TYPE});
     }
 
     deleteFile({filepath: uploadFile.path});
 
-    console.log(textResult,success)
-  } catch (error) {  const {length} = req.query;
-
+    //calling gemini service to generate summary from parsed text
+    const summary = await geminiSummary(textResult, length);
+    return sendResponse(
+      res,
+      httpStatus.OK,
+      responseMessages.SUMMARY_FETCEHD,
+      summary
+    );
+  } catch (error) { 
     deleteFile({filepath: uploadFile.path});
     return sendResponse(
       res,
