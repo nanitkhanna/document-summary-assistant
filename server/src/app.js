@@ -5,6 +5,7 @@ const routes = require('./routes');
 const httpStatus = require('http-status');
 const {errors} = require('celebrate');
 const {responseMessages} = require('./config/responseMessages');
+
 const app = express();
 
 //Restricting access to specified origins only : client-ip
@@ -17,7 +18,7 @@ app.use(errors());
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
 
-const PORT = config.PORT || 3000;
+const PORT = config.PORT;
 
 //routes for accessing application
 app.use(routes);

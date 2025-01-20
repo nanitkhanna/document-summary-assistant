@@ -1,9 +1,9 @@
 const httpStatus = require('http-status');
 const {summaryService} = require('../services');
+const {geminiSummary} = require('../services/gemini.service');
 const {sendResponse} = require('../lib/sendResponse');
 const {responseMessages} = require('../config/responseMessages');
 const {deleteFile} = require('../services/files.service');
-const { geminiSummary } = require('../services/gemini.service');
 
 const generateSummary = async (req, res) => {
   const uploadFile = req.file;
@@ -25,6 +25,15 @@ const generateSummary = async (req, res) => {
     if (mimeType.startsWith('image/')) {
       const {isData, data} = await summaryService.imageParser({
         imagePath: uploadFile.path
+      });
+
+      success = isData;
+      textResult = data;
+    } 
+    // If incoming file is pdf then pdf controller
+    else if (mimeType === 'application/pdf') {
+      const {isData, data} = await summaryService.pdfParser({
+        filePath: uploadFile.path
       });
 
       success = isData;
