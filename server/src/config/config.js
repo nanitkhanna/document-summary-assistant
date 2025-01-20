@@ -5,6 +5,8 @@ dotenv.config({path: path.join(__dirname, '../../.env')});
 const requiredEnvVariables = [
   'PORT',
   'ALLOWED_ORIGINS',
+  'UPLOAD_PATH',
+  'ALLOWED_FILE_TYPES'
 ];
 
 if (process.env.NODE_ENV === 'development') {
@@ -18,4 +20,6 @@ if (process.env.NODE_ENV === 'development') {
 module.exports = {
   PORT: process.env.PORT || 3000,
   ALLOWED_ORIGINS: process.env.ALLOWED_ORIGINS,
+  UPLOAD_PATH: process.env.UPLOAD_PATH,
+  ALLOWED_FILE_TYPES: process.env.ALLOWED_FILE_TYPES
 };

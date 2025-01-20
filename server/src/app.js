@@ -17,7 +17,7 @@ app.use(errors());
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
 
-const PORT = config.PORT;
+const PORT = config.PORT || 3000;
 
 //routes for accessing application
 app.use(routes);
