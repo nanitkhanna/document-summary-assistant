@@ -1,6 +1,6 @@
 # Document Summary Assistant
 
-Live URL: http://3.111.53.241
+Live URL: https://summarizer.nanitkhanna.com
 
 ## Project Description
 Document Summary Assistant is an application that generates smart summaries from uploaded PDFs or scanned image files. It simplifies the process of extracting key points and insights from lengthy documents.
