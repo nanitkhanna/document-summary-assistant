@@ -21,10 +21,10 @@ app.options('*', cors(corsOptions));
 const PORT = config.PORT;
 
 //routes for accessing application
-app.use(routes);
+app.use('/api', routes);
 
 //health check route
-app.get('/health', (req, res) => {
+app.get('/api/health', (req, res) => {
   res.status(200).json({message: `Server is running at port : ${PORT}`});
 });
 
